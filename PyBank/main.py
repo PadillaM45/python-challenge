@@ -4,19 +4,21 @@ import csv
 
 csvpath = os.path.join('..','PyBank','budget_data.csv')
 
-monthscount = 0
-totalnet = 0
-lastrow = 0
+monthscount = 1
 totalchange = 0
 totalchangelst = []
 xmonth = ''
 ymonth = ''
-x= 0
-y = 0
 
 with open(csvpath, newline='') as nfile:
     csvreader = csv.reader(nfile, delimiter=',')
     csv_header = next(csvreader)
+    row = next(csvreader)
+    lastrow = int(row[1])
+    totalnet = int(row[1])
+    x= 0
+    y= 0
+
 
     for row in csvreader:
         monthscount += 1
@@ -39,22 +41,27 @@ with open(csvpath, newline='') as nfile:
             y = int(row[1])
             ymonth = str(row[0])
             yx = totalchange
-    
+
     
     avgchange = sum(totalchangelst)/len(totalchangelst)
     lowest = min(totalchangelst)
     highest = max(totalchangelst)
 
 
-
+print(sum(totalchangelst))
+print(len(totalchangelst))
+print(lowest)
+print(yx)
+print(xy)
+print(totalchangelst)
 
 print(f"Financial Analysis")
 print(f"---------------------------")
 print(f"Total Months: {monthscount}")
 print(f"Total: ${totalnet}")
 print(f"Average Change: ${avgchange}")
-print(f"Greatest Increase in Profits:,{xmonth} (${xy})")
-print(f"Greatest Decrease in Profits:,{ymonth} (${yx})")
+print(f"Greatest Increase in Profits:,{xmonth} (${highest})")
+print(f"Greatest Decrease in Profits:,{ymonth} (${lowest})")
 
 
 
