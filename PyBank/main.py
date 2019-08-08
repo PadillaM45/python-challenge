@@ -33,11 +33,11 @@ with open(csvpath, newline='') as nfile:
 
 
 
-        if totalchange > x:
+        if int(row[1]) > x:
             x = int(row[1])
             xmonth = str(row[0])
             xy = totalchange
-        if totalchange < y:
+        if int(row[1]) < y:
             y = int(row[1])
             ymonth = str(row[0])
             yx = totalchange
@@ -68,11 +68,11 @@ print(f"Greatest Decrease in Profits:,{ymonth} (${lowest})")
 output_file = os.path.join('..', 'PyBank', 'outcome.text')
 
 
-# with open(output_file, 'w',) as txtfile:
-#     txtfile.write(f"Financial Analysis\n")
-#     txtfile.write(f"---------------------------\n")
-#     txtfile.write(f"Total Months: {monthscount}\n")
-#     txtfile.write(f"Total: ${totalnet}\n")
-#     txtfile.write(f"Average Change: ${avgchange}\n")
-#     txtfile.write(f"Greatest Increase in Profits:, {xmonth}, (${x})\n")
-#     txtfile.write(f"Greatest Decrease in Profits:,{ymonth} (${y})\n")
+with open(output_file, 'w',) as txtfile:
+    txtfile.write(f"Financial Analysis\n")
+    txtfile.write(f"---------------------------\n")
+    txtfile.write(f"Total Months: {monthscount}\n")
+    txtfile.write(f"Total: ${totalnet}\n")
+    txtfile.write(f"Average Change: ${avgchange}\n")
+    txtfile.write(f"Greatest Increase in Profits:, {xmonth}, (${x})\n")
+    txtfile.write(f"Greatest Decrease in Profits:,{ymonth} (${y})\n")
