@@ -36,11 +36,10 @@ with open(csvpath, newline='') as nfile:
         if int(row[1]) > x:
             x = int(row[1])
             xmonth = str(row[0])
-            xy = totalchange
+        
         if int(row[1]) < y:
             y = int(row[1])
             ymonth = str(row[0])
-            yx = totalchange
 
     
     avgchange = sum(totalchangelst)/len(totalchangelst)
@@ -51,8 +50,7 @@ with open(csvpath, newline='') as nfile:
 print(sum(totalchangelst))
 print(len(totalchangelst))
 print(lowest)
-print(yx)
-print(xy)
+
 print(totalchangelst)
 
 print(f"Financial Analysis")
@@ -74,5 +72,5 @@ with open(output_file, 'w',) as txtfile:
     txtfile.write(f"Total Months: {monthscount}\n")
     txtfile.write(f"Total: ${totalnet}\n")
     txtfile.write(f"Average Change: ${avgchange}\n")
-    txtfile.write(f"Greatest Increase in Profits:, {xmonth}, (${x})\n")
-    txtfile.write(f"Greatest Decrease in Profits:,{ymonth} (${y})\n")
+    txtfile.write(f"Greatest Increase in Profits:, {xmonth}, (${highest})\n")
+    txtfile.write(f"Greatest Decrease in Profits:,{ymonth} (${lowest})\n")
